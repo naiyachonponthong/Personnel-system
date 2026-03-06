@@ -3,7 +3,7 @@ const sequelize = require('../config/database');
 
 const Config = sequelize.define('Config', {
   id: {
-    type: DataTypes.CHAR(36),
+    type: DataTypes.STRING(36),
     primaryKey: true,
     defaultValue: DataTypes.UUIDV4
   },

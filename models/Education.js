@@ -3,12 +3,12 @@ const sequelize = require('../config/database');
 
 const Education = sequelize.define('Education', {
   id: {
-    type: DataTypes.CHAR(36),
+    type: DataTypes.STRING(36),
     primaryKey: true,
     defaultValue: DataTypes.UUIDV4
   },
   user_id: {
-    type: DataTypes.CHAR(36),
+    type: DataTypes.STRING(36),
     allowNull: false
   },
   academic_year: {

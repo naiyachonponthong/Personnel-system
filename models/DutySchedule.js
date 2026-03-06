@@ -3,7 +3,7 @@ const sequelize = require('../config/database');
 
 const DutySchedule = sequelize.define('DutySchedule', {
   id: {
-    type: DataTypes.CHAR(36),
+    type: DataTypes.STRING(36),
     primaryKey: true,
     defaultValue: DataTypes.UUIDV4
   },
@@ -21,7 +21,7 @@ const DutySchedule = sequelize.define('DutySchedule', {
     comment: '1=morning, 2=evening'
   },
   location_id: {
-    type: DataTypes.CHAR(36),
+    type: DataTypes.STRING(36),
     allowNull: true
   },
   location_data: {
@@ -47,7 +47,7 @@ const DutySchedule = sequelize.define('DutySchedule', {
     defaultValue: ''
   },
   created_by: {
-    type: DataTypes.CHAR(36),
+    type: DataTypes.STRING(36),
     allowNull: true
   }
 }, {

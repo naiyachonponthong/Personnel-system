@@ -7,6 +7,8 @@ require('dotenv').config();
 
 const sequelize = require('./config/database');
 const { errorHandler } = require('./middleware/errorHandler');
+
+// Import models to register associations before sync
 require('./models');
 
 // Import routes
@@ -72,10 +74,8 @@ async function startServer() {
     await sequelize.authenticate();
     console.log('Database connected successfully.');
 
-    // Sync all models (create tables) - disable FK checks to avoid ordering issues
-    await sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
-    await sequelize.sync({ force: false, alter: false });
-    await sequelize.query('SET FOREIGN_KEY_CHECKS = 1');
+    // Sync all models (create tables)
+    await sequelize.sync({ alter: false });
     console.log('Database tables synced.');
 
     // Seed default data

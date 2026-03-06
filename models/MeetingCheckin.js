@@ -3,16 +3,16 @@ const sequelize = require('../config/database');
 
 const MeetingCheckin = sequelize.define('MeetingCheckin', {
   id: {
-    type: DataTypes.CHAR(36),
+    type: DataTypes.STRING(36),
     primaryKey: true,
     defaultValue: DataTypes.UUIDV4
   },
   meeting_id: {
-    type: DataTypes.CHAR(36),
+    type: DataTypes.STRING(36),
     allowNull: false
   },
   user_id: {
-    type: DataTypes.CHAR(36),
+    type: DataTypes.STRING(36),
     allowNull: false
   },
   checkin_time: {

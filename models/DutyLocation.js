@@ -3,7 +3,7 @@ const sequelize = require('../config/database');
 
 const DutyLocation = sequelize.define('DutyLocation', {
   id: {
-    type: DataTypes.CHAR(36),
+    type: DataTypes.STRING(36),
     primaryKey: true,
     defaultValue: DataTypes.UUIDV4
   },
@@ -40,7 +40,7 @@ const DutyLocation = sequelize.define('DutyLocation', {
     defaultValue: ''
   },
   created_by: {
-    type: DataTypes.CHAR(36),
+    type: DataTypes.STRING(36),
     allowNull: true
   }
 }, {

@@ -3,7 +3,7 @@ const sequelize = require('../config/database');
 
 const Meeting = sequelize.define('Meeting', {
   id: {
-    type: DataTypes.CHAR(36),
+    type: DataTypes.STRING(36),
     primaryKey: true,
     defaultValue: DataTypes.UUIDV4
   },
@@ -72,7 +72,7 @@ const Meeting = sequelize.define('Meeting', {
     defaultValue: ''
   },
   created_by: {
-    type: DataTypes.CHAR(36),
+    type: DataTypes.STRING(36),
     allowNull: true
   }
 }, {
