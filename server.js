@@ -7,6 +7,7 @@ require('dotenv').config();
 
 const sequelize = require('./config/database');
 const { errorHandler } = require('./middleware/errorHandler');
+const { User, Config, DutyLocation } = require('./models');
 
 // Import routes
 const authRoutes = require('./routes/auth');
@@ -71,8 +72,14 @@ async function startServer() {
     await sequelize.authenticate();
     console.log('Database connected successfully.');
 
-    // Sync all models (create tables)
-    await sequelize.sync({ alter: false });
+    // Sync all models (create tables) in dependency order
+    // First sync independent tables
+    await User.sync({ force: false, alter: false });
+    await Config.sync({ force: false, alter: false });
+    await DutyLocation.sync({ force: false, alter: false });
+    
+    // Then sync dependent tables
+    await sequelize.sync({ force: false, alter: false });
     console.log('Database tables synced.');
 
     // Seed default data
