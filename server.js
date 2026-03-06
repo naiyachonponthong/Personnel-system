@@ -74,12 +74,12 @@ async function startServer() {
 
     // Sync all models (create tables) in dependency order
     // First sync independent tables
-    await User.sync({ force: false, alter: false });
-    await Config.sync({ force: false, alter: false });
-    await DutyLocation.sync({ force: false, alter: false });
+    await User.sync({ force: true });
+    await Config.sync({ force: true });
+    await DutyLocation.sync({ force: true });
     
     // Then sync dependent tables
-    await sequelize.sync({ force: false, alter: false });
+    await sequelize.sync({ force: true });
     console.log('Database tables synced.');
 
     // Seed default data
